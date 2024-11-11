@@ -1,3 +1,471 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <math.h>
+#include<string.h>
+
+long int Bin_to_Dec(long int);
+long int Bin_to_Oct(long int);
+long int Bin_to_Hex(long int);
+long int Dec_to_Bin(long int);
+long int Dec_to_Oct(long int);
+long int Dec_to_Hex(long int);
+long int Oct_to_Bin(long int);
+long int Oct_to_Dec(long int);
+long int Oct_to_Hex(long int);
+void Hex_to_Bin(char []);
+void Hex_to_Dec(char []);
+void Hex_to_Oct(char []);
+
+int main()
+{
+    int op,num=1,check;
+    long int bin,oct,dec;
+    char hex[100];
+    int i,j,space;
+
+
+    printf("\t\t\t\t\tNUMBER SYSTEM CONVERSION\n");
+    printf("\t\t\t\t    =================================\n\n");
+
+
+    while(num!=0)
+    {
+        printf("*CHOOSE THE CONVERSION*\n\n");
+
+
+        printf("<< BINARY >>\n");
+        printf("--------------------------\n");
+        printf("1: Binary to Decimal.\n2: Binary to Octal.\n3: Binary to Hexa-Decimal.\n");
+
+
+        printf("\n<< DECIMAL >>\n");
+        printf("--------------------------\n");
+        printf("4: Decimal to Binary.\n5: Decimal to Octal.\n6: Decimal to Hexa-Decimal.\n");
+
+
+        printf("\n<< OCTAL >>\n");
+        printf("---------------------------\n");
+        printf("7: Octal to Binary.\n8: Octal to Decimal.\n9: Octal to Hexa-Decimal.\n");
+
+
+        printf("\n<< HEXA-DECIMAL >>\n");
+        printf("----------------------------\n");
+        printf("10: Hexa-Decimal to Binary.\n11: Hexa-Decimal to Decimal.\n12: Hexa-Decimal to Octal.\n");
+
+
+        printf("\nENTER YOUR CHOICE: ");
+        scanf("%d",&op);
+
+
+        switch(op)
+        {
+            case 1:
+                system("cls");
+                printf("\n\t\t\t\t\t***BINARY TO DECIMAL***\n");
+                D:
+                printf("\nEnter the Number in Binary form (0s & 1s): ");
+                scanf("%ld",&bin);
+
+                check=bin;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>1||num<0)
+                    {
+                        printf("\n%d IS NOT A BINARY NUMBER.\n",bin);
+                        printf("***TRY AGAIN****\n");
+                        goto D;
+                    }
+                    else
+                    check=check/10;
+                }
+
+
+                Bin_to_Dec(bin); break;
+
+
+            case 2:
+                system("cls");
+                printf("\n\t\t\t\t\t***BINARY TO OCTAL***\n");
+                E:
+                printf("\nEnter the Number in Binary form (0s & 1s): ");
+                scanf("%ld",&bin);
+
+
+                check=bin;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>1||num<0)
+                    {
+                        printf("\n%d IS NOT A BINARY NUMBER.\n",bin);
+                        printf("***TRY AGAIN****\n");
+                        goto E;
+                    }
+                    else
+                    check=check/10;
+                }
+
+
+                Bin_to_Oct(bin); break;
+
+
+            case 3:
+                system("cls");
+                printf("\n\t\t\t\t\t***BINARY TO HEXA-DECIMAL***\n");
+                F:
+                printf("\nEnter the Number in Binary form (0s & 1s): ");
+                scanf("%ld",&bin);
+
+
+                check=bin;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>1||num<0)
+                    {
+                        printf("\n%d IS NOT A BINARY NUMBER.\n",bin);
+                        printf("***TRY AGAIN****\n");
+                        goto F;
+                    }
+                    else
+                    check=check/10;
+                }
+
+
+                Bin_to_Hex(bin); break;
+
+
+            case 4:
+                system("cls");
+                printf("\n\t\t\t\t\t***DECIMAL TO BINARY***\n");
+                printf("\nEnter the Number in Decimal form (0 to 9): ");
+                scanf("%ld",&dec);
+                Dec_to_Bin(dec); break;
+
+
+            case 5:
+                system("cls");
+                printf("\n\t\t\t\t\t***DECIMAL TO OCTAL***\n");
+                printf("\nEnter the Number in Decimal form (0 to 9): ");
+                scanf("%ld",&dec);
+                Dec_to_Oct(dec); break;
+
+
+            case 6:
+                system("cls");
+                printf("\n\t\t\t\t\t***DECIMAL TO HEXA-DECIMAL***\n");
+                printf("\nEnter the Number in Decimal form (0 to 9): ");
+                scanf("%ld",&dec);
+                Dec_to_Hex(dec); break;
+
+
+            case 7:
+                system("cls");
+                printf("\n\t\t\t\t\t***OCTAL TO BINARY***\n");
+                A:
+                printf("\nEnter the Number in Octal form (0 to 7): ");
+                scanf("%ld",&oct);
+
+
+                check=oct;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>7||num<0)
+                    {
+                        printf("\n%d IS NOT A OCTAL NUMBER.\n",num);
+                        printf("***TRY AGAIN****\n");
+                        goto A;
+                    }
+                    else
+                    {
+                    check=check/10;
+                    i++;
+                    }
+                }
+                Oct_to_Bin(oct); break;
+
+
+            case 8:
+                system("cls");
+                printf("\n\t\t\t\t\t***OCTAL TO DECIMAL***\n");
+                B:
+                printf("\nEnter the Number in Octal form (0 to 7): ");
+                scanf("%ld",&oct);
+
+
+                check=oct;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>7||num<0)
+                    {
+                        printf("\n%d IS NOT A OCTAL NUMBER.\n",num);
+                        printf("***TRY AGAIN****\n");
+                        goto B;
+                    }
+                    else
+                    {
+                    check=check/10;
+                    i++;
+                    }
+                }
+                Oct_to_Dec(oct); break;
+
+
+            case 9:
+                system("cls");
+                printf("\n\t\t\t\t\t***OCTAL TO HEXA-DECIMAL***\n");
+                C:
+                printf("\nEnter the Number in Octal form (0 to 7): ");
+                scanf("%ld",&oct);
+
+
+                check=oct;
+
+
+                while(check!=0)
+                {
+                    num=check%10;
+                    if(num>7||num<0)
+                    {
+                        printf("\n%d IS NOT A OCTAL NUMBER.\n",num);
+                        printf("***TRY AGAIN****\n");
+                        goto C;
+                    }
+                    else
+                    {
+                    check=check/10;
+                    i++;
+                    }
+                }
+                Oct_to_Hex(oct); break;
+
+
+            case 10:
+                system("cls");
+                printf("\n\t\t\t\t\t***HEXA-DECIMAL TO BINARY***\n");
+                X:
+                printf("\nEnter the Number in Hexa-Decimal form: ");
+                scanf("%s",&hex);
+
+
+                for(i=strlen(hex)-1;i>=0;i--)
+                {
+                    if(hex[i]>'f' && hex[i]<='z' || hex[i]>'F'&& hex[i]<='Z')
+                    {
+                        printf("'%c' IS NOT A HEXA-DECIMAL NUMBER.\n",hex[i]);
+                        printf("***TRY AGAIN****\n");
+                        goto X;
+                    }
+                }
+                Hex_to_Bin(hex); break;
+
+
+            case 11:
+                system("cls");
+                printf("\n\t\t\t\t\t***HEXA-DECIMAL TO DECIMAL***\n");
+                Y:
+                printf("\nEnter the Number in Hexa-Decimal form: ");
+                scanf("%s",&hex);
+
+                for(i=strlen(hex)-1;i>=0;i--)
+                {
+                    if(hex[i]>'f' && hex[i]<='z' || hex[i]>'F'&& hex[i]<='Z')
+                    {
+                        printf("'%c' IS NOT A HEXA-DECIMAL NUMBER.\n",hex[i]);
+                        printf("***TRY AGAIN****\n");
+                        goto Y;
+                    }
+                }
+                Hex_to_Dec(hex); break;
+
+
+            case 12:
+                system("cls");
+                printf("\n\t\t\t\t\t***HEXA-DECIMAL TO OCTAL***\n");
+                Z:
+                printf("\nEnter the Number in Hexa-Decimal form: ");
+                scanf("%s",&hex);
+
+
+                for(i=strlen(hex)-1;i>=0;i--)
+                {
+                    if(hex[i]>'f' && hex[i]<='z' || hex[i]>'F'&& hex[i]<='Z')
+                    {
+                        printf("'%c' IS NOT A HEXA-DECIMAL NUMBER.\n",hex[i]);
+                        printf("***TRY AGAIN****\n");
+                        goto Z;
+                    }
+                }
+                Hex_to_Oct(hex); break;
+
+
+            default:
+                printf("\n***INVALID NUMBER***\n");
+                break;
+        }
+        printf("\n\nDO YOU WANT TO CONTINUE = (1/0) :\n");
+        scanf("%d",&num);
+        system("cls");
+
+
+    }
+
+}
+
+//Binary to decimal
+long int Bin_to_Dec(long int bin)
+{
+    int rem,sum=0,i=0;
+    while(bin!=0)
+    {
+        rem=bin%10;
+        bin=bin/10;
+        sum=sum+rem*pow(2,i);
+        i++;
+    }
+
+
+    printf("\nEquivalent Decimal Number : %d",sum);
+}
+
+
+long int Bin_to_Oct(long int bin)
+{
+    int i=0,rem,sum=0,remain[100],len=0;
+
+//Binary to decimal then decimal to octal
+    while(bin!=0)
+    {
+        rem=bin%10;
+        bin=bin/10;
+        sum=sum+rem*pow(2,i);
+        i++;
+    }
+    i=0;
+    while(sum!=0)
+    {
+        remain[i]=sum%8;
+        sum=sum/8;
+        i++;
+        len++;
+    }
+    printf("\nEquivalent Octal Number : ");
+    for(i=len-1;i>=0;i--)
+    {
+        printf("%d",remain[i]);
+    }
+}
+
+
+long int Bin_to_Hex(long int bin)
+{
+    int rem,i=0,sum=0,remain[100],len=0;
+//Binary to decimal then decimal to Hexa-decimal
+    while(bin!=0)
+    {
+        rem=bin%10;
+        bin=bin/10;
+        sum=sum+rem*pow(2,i);
+        i++;
+    }
+    i=0;
+    while(sum!=0)
+    {
+        remain[i]=sum%16;
+        sum=sum/16;
+        i++;
+        len++;
+    }
+    printf("\nEquivalent Hexa-Decimal Number : ");
+    for(i=len-1;i>=0;i--)
+    {
+        switch(remain[i])
+        {
+            case 10:
+                printf("A"); break;
+
+
+            case 11:
+                printf("B"); break;
+
+
+            case 12:
+                printf("C"); break;
+
+
+            case 13:
+                printf("D"); break;
+
+
+            case 14:
+                printf("E"); break;
+
+
+            case 15:
+                printf("F"); break;
+
+
+            default:
+                printf("%d",remain[i]);
+        }
+
+
+    }
+}
+
+//Decimal to Binary
+long int Dec_to_Bin(long int dec)
+{
+    int rem[50],i,len=0;
+    do
+    {
+        rem[i]=dec%2;
+        dec=dec/2;
+        i++;
+        len++;
+    }
+    while(dec!=0);
+
+
+    printf("\nEquivalent Binary Number : ");
+    for(i=len-1;i>=0;i--)
+    {
+        printf("%d",rem[i]);
+    }
+}
+
+//Decimal to octal
+long int Dec_to_Oct(long int dec)
+{
+    int rem[50],i,len=0;
+    do
+    {
+        rem[i]=dec%8;
+        dec=dec/8;
+        i++;
+        len++;
+    }
+    while(dec!=0);
+
+
+    printf("\nEquivalent Octal Number : ");
+    for(i=len-1;i>=0;i--)
+    {
+        printf("%d",rem[i]);
+    }
 }
 
 //Decimal to hexa-decimal
@@ -323,3 +791,4 @@ void Hex_to_Oct(char hex[])
 
 
 }
+
